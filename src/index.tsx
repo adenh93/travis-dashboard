@@ -1,33 +1,24 @@
-import 'core-js';
+import "core-js";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Route, HashRouter as Router, Switch, Link } from 'react-router-dom';
+import App from "./pages/App";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { grey } from "@material-ui/core/colors";
+import { CssBaseline } from "@material-ui/core";
 
-import {
-  HelloOne,
-  HelloTwo
-} from './components';
-
-class App extends React.Component {
-    render() {
-      return (
-        <Router>
-          <div>
-            <nav>
-              <Link to="/">Home</Link>
-              <Link to="/Two">Two</Link>
-            </nav>
-            <Switch>
-              <Route exact path="/" component={HelloOne} />
-              <Route exact path="/Two" component={HelloTwo} />
-            </Switch>
-          </div>
-        </Router>
-      );
+const theme = createMuiTheme({
+  palette: {
+    background: {
+      default: grey[100]
     }
   }
+});
 
 ReactDOM.render(
-    <App />,
-    document.getElementById("app")
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <App />
+  </ThemeProvider>,
+  document.getElementById("app")
 );
