@@ -1,7 +1,7 @@
 import "core-js";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import App from "./pages/App";
+import { App } from "./pages/App";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { grey } from "@material-ui/core/colors";
