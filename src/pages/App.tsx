@@ -2,9 +2,16 @@ import * as React from "react";
 import { HashRouter as Router } from "react-router-dom";
 import { DashboardSidebar } from "../components/Dashboard";
 import { Header } from "../components/UI";
-import { makeStyles, Theme, createStyles, Grid } from "@material-ui/core";
+import {
+  makeStyles,
+  Theme,
+  createStyles,
+  Grid,
+  Paper,
+  Typography
+} from "@material-ui/core";
 
-const sidebarWidth = 240;
+const sidebarWidth = 220;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,8 +36,10 @@ export const App: React.SFC = () => {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              This is content
+            <Grid item xs={3}>
+              <Paper>
+                <Typography variant="body1">This is content</Typography>
+              </Paper>
             </Grid>
           </Grid>
         </main>

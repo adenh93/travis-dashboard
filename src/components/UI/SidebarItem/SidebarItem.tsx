@@ -18,7 +18,8 @@ interface Props {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     icon: {
-      fontSize: 20
+      fontSize: 20,
+      color: theme.palette.text.primary
     }
   })
 );
