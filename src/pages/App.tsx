@@ -1,10 +1,11 @@
 import * as React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { makeStyles, Theme, createStyles } from "@material-ui/core";
 import { DashboardSidebar } from "../components/Dashboard";
 import { Header } from "../components/UI";
-import { makeStyles, Theme, createStyles } from "@material-ui/core";
+import { BuildListPage } from "../pages/Builds";
 
-const sidebarWidth = 220;
+const sidebarWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +31,7 @@ export const App: React.SFC = () => {
           <div className={classes.toolbar} />
           <Switch>
             <Route exact path="/" component={null} />
-            <Route exact path="/builds" component={null} />
+            <Route exact path="/builds" component={BuildListPage} />
             <Route exact path="/analytics" component={null} />
           </Switch>
         </main>
