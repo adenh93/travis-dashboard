@@ -1,15 +1,8 @@
 import * as React from "react";
-import { HashRouter as Router } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { DashboardSidebar } from "../components/Dashboard";
 import { Header } from "../components/UI";
-import {
-  makeStyles,
-  Theme,
-  createStyles,
-  Grid,
-  Paper,
-  Typography
-} from "@material-ui/core";
+import { makeStyles, Theme, createStyles } from "@material-ui/core";
 
 const sidebarWidth = 220;
 
@@ -35,13 +28,11 @@ export const App: React.SFC = () => {
         <DashboardSidebar width={sidebarWidth} />
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Paper>
-                <Typography variant="body1">This is content</Typography>
-              </Paper>
-            </Grid>
-          </Grid>
+          <Switch>
+            <Route exact path="/" component={null} />
+            <Route exact path="/builds" component={null} />
+            <Route exact path="/analytics" component={null} />
+          </Switch>
         </main>
       </div>
     </Router>
