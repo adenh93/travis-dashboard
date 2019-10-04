@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const DashboardSidebar: React.SFC<Props> = ({ width }) => (
-  <Sidebar width={width}>
+  <Sidebar width={width} brandLabel="Dashboard">
     <SidebarItem icon={faCodeBranch} text="Builds" route="/builds" />
     <SidebarItem icon={faChartBar} text="Analytics" route="/analytics" />
   </Sidebar>

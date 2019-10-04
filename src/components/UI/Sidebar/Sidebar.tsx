@@ -1,4 +1,5 @@
 import * as React from "react";
+import { SidebarBrand } from "../SidebarBrand";
 import {
   Drawer,
   createStyles,
@@ -9,25 +10,27 @@ import {
 
 interface Props {
   width: number;
+  brandLabel: string;
   position?: "left" | "top" | "right" | "bottom";
 }
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: (props: Props) => props.width,
+      width: (props: any) => props.width,
       flexShrink: 0
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       backgroundColor: theme.palette.primary.main,
-      width: (props: Props) => props.width
+      width: (props: any) => props.width
     }
   })
 );
 
 export const Sidebar: React.SFC<Props> = ({
   position = "left",
+  brandLabel = "",
   children,
   ...props
 }) => {
@@ -41,7 +44,7 @@ export const Sidebar: React.SFC<Props> = ({
       }}
       anchor={position}
     >
-      <div className={classes.toolbar} />
+      <SidebarBrand label={brandLabel} />
       <List>{children}</List>
     </Drawer>
   );
