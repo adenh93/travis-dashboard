@@ -4,8 +4,7 @@ import {
   createStyles,
   Theme,
   makeStyles,
-  List,
-  Divider
+  List
 } from "@material-ui/core";
 
 interface Props {

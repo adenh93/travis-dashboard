@@ -7,7 +7,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { grey } from "@material-ui/core/colors";
 import { CssBaseline } from "@material-ui/core";
 
-const main = "#222437";
+const main = "#282c34";
 
 const theme = createMuiTheme({
   palette: {
@@ -16,10 +16,10 @@ const theme = createMuiTheme({
     },
     background: {
       paper: main,
-      default: "#1C1E2F"
+      default: "#21252b"
     },
     text: {
-      primary: grey[300]
+      primary: grey[400]
     }
   }
 });
