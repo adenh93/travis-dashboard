@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BuildsListEmpty } from "../BuildsListEmpty";
+import { BuildsListEmpty, BuildsListLoading } from "..";
 import { Grid } from "@material-ui/core";
 
 interface Props {}
@@ -7,7 +7,8 @@ interface Props {}
 export const BuildsList: React.SFC<Props> = () => {
   return (
     <Grid item xs={12}>
-      <BuildsListEmpty />
+      <BuildsListLoading />
+      {/* <BuildsListEmpty /> */}
     </Grid>
   );
 };
