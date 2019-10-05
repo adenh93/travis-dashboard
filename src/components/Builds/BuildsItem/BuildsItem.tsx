@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Build } from "../../../typings/types";
+import { Build } from "../../../common/types";
 
 interface Props {
   build: Build;
