@@ -1,11 +1,12 @@
 import * as React from "react";
 import { makeStyles, createStyles } from "@material-ui/styles";
-import { Theme, Modal } from "@material-ui/core";
+import { Theme, Modal, Box, Typography, Divider } from "@material-ui/core";
 import { Button } from "../Button";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   open: boolean;
+  title: string;
   onCancel?: (e: any) => void;
   onOk?: (e: any) => void;
   onClose?: () => void;
@@ -25,12 +26,16 @@ const useStyles = makeStyles((theme: Theme) =>
       border: "2px solid #000",
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3)
+    },
+    title: {
+      marginBottom: theme.spacing(1)
     }
   })
 );
 
 export const ConfirmModal: React.SFC<Props> = ({
   open,
+  title,
   onCancel,
   onOk,
   onClose,
@@ -40,14 +45,19 @@ export const ConfirmModal: React.SFC<Props> = ({
   return (
     <Modal className={classes.root} open={open} onClose={onClose}>
       <div className={classes.paper}>
+        <Typography className={classes.title} variant="h6">
+          {title}
+        </Typography>
         {children}
-        <Button icon={faCheck} label="ok" onClick={onOk} />{" "}
-        <Button
-          icon={faTimes}
-          color="secondary"
-          label="cancel"
-          onClick={onCancel}
-        />
+        <Box mt={2}>
+          <Button icon={faCheck} label="ok" onClick={onOk} />{" "}
+          <Button
+            icon={faTimes}
+            color="secondary"
+            label="cancel"
+            onClick={onCancel}
+          />
+        </Box>
       </div>
     </Modal>
   );

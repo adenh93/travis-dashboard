@@ -7,6 +7,7 @@ import {
   faExclamationTriangle,
   faPlusSquare
 } from "@fortawesome/free-solid-svg-icons";
+import { BuildsAddSourceModal } from "../BuildsAddSourceModal";
 
 interface Props {}
 
@@ -37,6 +38,7 @@ export const BuildsNoSource: React.SFC<Props> = () => {
         </Typography>
         <Button icon={faPlusSquare} label="Add Source" size="large" />
       </Paper>
+      <BuildsAddSourceModal open={true} />
     </>
   );
 };

@@ -20,7 +20,6 @@ const height = 60;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {},
     paper: {
       height: height,
       display: "flex",
