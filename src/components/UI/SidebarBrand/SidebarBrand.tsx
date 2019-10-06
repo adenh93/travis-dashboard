@@ -15,7 +15,10 @@ interface Props {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: theme.mixins.toolbar
+    root: theme.mixins.toolbar,
+    link: {
+      color: theme.palette.text.primary
+    }
   })
 );
 
@@ -24,7 +27,7 @@ export const SidebarBrand: React.SFC<Props> = ({ label }) => {
   return (
     <Box p={2} className={classes.root}>
       <Typography variant="h6">
-        <Link color="textPrimary" component={RouterLink} to="/">
+        <Link className={classes.link} component={RouterLink} to="/">
           {label}
         </Link>
       </Typography>

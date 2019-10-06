@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
     icon: {
       fontSize: 20,
       color: theme.palette.text.primary
+    },
+    link: {
+      color: theme.palette.text.primary
     }
   })
 );
@@ -37,7 +40,12 @@ export const SidebarItem: React.SFC<Props> = ({ icon, text, route }) => {
       </ListItemIcon>
       <ListItemText>
         <Typography variant="body1">
-          <Link color="textPrimary" component={RouterLink} to={route}>
+          <Link
+            className={classes.link}
+            color="textPrimary"
+            component={RouterLink}
+            to={route}
+          >
             {text}
           </Link>
         </Typography>

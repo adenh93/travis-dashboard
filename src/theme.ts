@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core";
-import { grey, blueGrey, green } from "@material-ui/core/colors";
+import { grey, blueGrey, green, teal } from "@material-ui/core/colors";
 
 const main = "#282c34";
 
@@ -58,6 +58,11 @@ export const theme = createMuiTheme({
         "&:hover": {
           backgroundColor: grey[600]
         }
+      }
+    },
+    MuiLink: {
+      root: {
+        color: teal[300]
       }
     }
   },
