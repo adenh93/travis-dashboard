@@ -5,7 +5,7 @@ import { Button } from "../../UI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faExclamationTriangle,
-  faPlusCircle
+  faPlusSquare
 } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {}
@@ -22,19 +22,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const BuildsListNoSource: React.SFC<Props> = () => {
+export const BuildsNoSource: React.SFC<Props> = () => {
   const classes = useStyles({});
   return (
-    <Paper className={classes.root}>
-      <FontAwesomeIcon
-        className={classes.row}
-        size="3x"
-        icon={faExclamationTriangle}
-      />
-      <Typography className={classes.row} variant="body1">
-        You have not added a Travis CI API source yet
-      </Typography>
-      <Button icon={faPlusCircle} label="Add Source" size="large" />
-    </Paper>
+    <>
+      <Paper className={classes.root}>
+        <FontAwesomeIcon
+          className={classes.row}
+          size="3x"
+          icon={faExclamationTriangle}
+        />
+        <Typography className={classes.row} variant="body1">
+          You have not added a Travis CI API source yet
+        </Typography>
+        <Button icon={faPlusSquare} label="Add Source" size="large" />
+      </Paper>
+    </>
   );
 };

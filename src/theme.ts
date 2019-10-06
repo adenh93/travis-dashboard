@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core";
-import { grey, blueGrey, lightGreen } from "@material-ui/core/colors";
+import { grey, blueGrey, green } from "@material-ui/core/colors";
 
 const main = "#282c34";
 
@@ -46,17 +46,17 @@ export const theme = createMuiTheme({
         borderRadius: 0
       },
       containedPrimary: {
-        color: grey[800],
-        backgroundColor: lightGreen[300],
-        "&:hover": {
-          backgroundColor: lightGreen[200]
-        }
-      },
-      containedSecondary: {
         color: grey[300],
         backgroundColor: blueGrey[700],
         "&:hover": {
           backgroundColor: blueGrey[600]
+        }
+      },
+      containedSecondary: {
+        color: grey[300],
+        backgroundColor: grey[700],
+        "&:hover": {
+          backgroundColor: grey[600]
         }
       }
     }

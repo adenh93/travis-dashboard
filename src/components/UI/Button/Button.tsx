@@ -6,7 +6,7 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   label: string;
-  size: "large" | "medium" | "small";
+  size?: "large" | "medium" | "small";
   variant?: "contained" | "outlined" | "text";
   color?: "primary" | "secondary";
   icon?: IconDefinition;
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const Button: React.SFC<Props> = ({
   label,
-  size,
+  size = "medium",
   variant = "contained",
   color = "primary",
   icon,
