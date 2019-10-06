@@ -25,8 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: 10
     },
     button: {
-      marginTop: 10,
-      backgroundColor: theme.status.success
+      marginTop: 10
     },
     buttonIcon: {
       marginRight: 10
@@ -44,9 +43,14 @@ export const BuildsListNoSource: React.SFC<Props> = () => {
         size="3x"
       />
       <Typography variant="body1">
-        You have not added a Travis CI source yet
+        You have not added a Travis CI API source yet
       </Typography>
-      <Button className={classes.button} variant="contained" size="large">
+      <Button
+        className={classes.button}
+        color="primary"
+        variant="contained"
+        size="large"
+      >
         <FontAwesomeIcon className={classes.buttonIcon} icon={faPlusCircle} />
         Add Source
       </Button>

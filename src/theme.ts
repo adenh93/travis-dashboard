@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core";
-import { grey } from "@material-ui/core/colors";
+import { grey, blueGrey, lightGreen } from "@material-ui/core/colors";
 
 const main = "#282c34";
 
@@ -32,7 +32,33 @@ export const theme = createMuiTheme({
       default: "#21252b"
     },
     text: {
-      primary: grey[400]
+      primary: grey[400],
+      secondary: grey[800]
+    }
+  },
+  overrides: {
+    MuiButton: {
+      sizeLarge: {
+        width: 200,
+        height: 50
+      },
+      contained: {
+        borderRadius: 0
+      },
+      containedPrimary: {
+        color: grey[800],
+        backgroundColor: lightGreen[300],
+        "&:hover": {
+          backgroundColor: lightGreen[200]
+        }
+      },
+      containedSecondary: {
+        color: grey[300],
+        backgroundColor: blueGrey[700],
+        "&:hover": {
+          backgroundColor: blueGrey[600]
+        }
+      }
     }
   },
   status: {
