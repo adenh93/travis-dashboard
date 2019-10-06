@@ -1,12 +1,7 @@
 import * as React from "react";
 import { createStyles } from "@material-ui/styles";
-import {
-  Theme,
-  Paper,
-  makeStyles,
-  Typography,
-  Button
-} from "@material-ui/core";
+import { Theme, Paper, makeStyles, Typography } from "@material-ui/core";
+import { Button } from "../../UI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faExclamationTriangle,
@@ -21,14 +16,8 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(4),
       textAlign: "center"
     },
-    icon: {
+    row: {
       marginBottom: 10
-    },
-    button: {
-      marginTop: 10
-    },
-    buttonIcon: {
-      marginRight: 10
     }
   })
 );
@@ -38,22 +27,14 @@ export const BuildsListNoSource: React.SFC<Props> = () => {
   return (
     <Paper className={classes.root}>
       <FontAwesomeIcon
-        className={classes.icon}
-        icon={faExclamationTriangle}
+        className={classes.row}
         size="3x"
+        icon={faExclamationTriangle}
       />
-      <Typography variant="body1">
+      <Typography className={classes.row} variant="body1">
         You have not added a Travis CI API source yet
       </Typography>
-      <Button
-        className={classes.button}
-        color="primary"
-        variant="contained"
-        size="large"
-      >
-        <FontAwesomeIcon className={classes.buttonIcon} icon={faPlusCircle} />
-        Add Source
-      </Button>
+      <Button icon={faPlusCircle} label="Add Source" size="large" />
     </Paper>
   );
 };
