@@ -1,14 +1,8 @@
 import * as React from "react";
 import { ConfirmModal, Button } from "../../UI";
-import {
-  Typography,
-  TextField,
-  FormControl,
-  Grid,
-  Link,
-  Box
-} from "@material-ui/core";
-import { faEye, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Typography, Grid, Link, Box } from "@material-ui/core";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { PasswordField } from "../../UI";
 
 interface Props {
   open: boolean;
@@ -40,19 +34,16 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
       <Box my={2}>
         <form>
           <Grid container spacing={3}>
-            <Grid item xs={7}>
-              <FormControl fullWidth>
-                <TextField type="password" />
-              </FormControl>
+            <Grid item xs={9}>
+              <PasswordField />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item>
               <Button
                 color="secondary"
                 size="small"
-                label="Show"
-                icon={faEye}
-              />{" "}
-              <Button size="small" label="Check" icon={faSearch} />
+                label="Check"
+                icon={faCheckCircle}
+              />
             </Grid>
           </Grid>
         </form>

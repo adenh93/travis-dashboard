@@ -5,3 +5,4 @@ export { SidebarBrand } from "./SidebarBrand";
 export { SearchBar } from "./SearchBar";
 export { Button } from "./Button";
 export { ConfirmModal } from "./ConfirmModal";
+export { PasswordField } from "./PasswordField";
