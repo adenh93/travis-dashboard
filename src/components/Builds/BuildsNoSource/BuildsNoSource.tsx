@@ -25,6 +25,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const BuildsNoSource: React.SFC<Props> = () => {
   const classes = useStyles({});
+  const [modalOpen, setModalOpen] = React.useState(false);
+
+  const handleModalOk = () => setModalOpen(false);
+  const handleModalCancel = () => setModalOpen(false);
+
   return (
     <>
       <Paper className={classes.root}>
@@ -36,9 +41,18 @@ export const BuildsNoSource: React.SFC<Props> = () => {
         <Typography className={classes.row} variant="body1">
           You have not added a Travis CI API source yet
         </Typography>
-        <Button icon={faPlusSquare} label="Add Source" size="large" />
+        <Button
+          icon={faPlusSquare}
+          onClick={() => setModalOpen(true)}
+          label="Add Source"
+          size="large"
+        />
       </Paper>
-      <BuildsAddSourceModal open={true} />
+      <BuildsAddSourceModal
+        open={modalOpen}
+        onOk={handleModalOk}
+        onCancel={handleModalCancel}
+      />
     </>
   );
 };

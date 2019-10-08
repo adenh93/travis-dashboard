@@ -41,7 +41,7 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
     checkApiKey();
     if (!apiKeyInvalid) {
       storeApiKey(apiKey);
-      onOk;
+      onOk();
     }
   };
 
