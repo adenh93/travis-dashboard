@@ -15,6 +15,9 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
   onCancel,
   onOk
 }) => {
+  const [apiKey, setApiKey] = React.useState();
+  const handleApiKeyChange = (e: any) => setApiKey(e.target.value);
+
   return (
     <ConfirmModal
       open={open}
@@ -35,7 +38,11 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
         <form>
           <Grid container spacing={3}>
             <Grid item xs={9}>
-              <PasswordField />
+              <PasswordField
+                value={apiKey}
+                placeholder="Enter an API key..."
+                onChange={handleApiKeyChange}
+              />
             </Grid>
             <Grid item>
               <Button

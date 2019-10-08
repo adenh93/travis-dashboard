@@ -12,7 +12,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
-  value?: string;
+  value: string;
   placeholder?: string;
   onChange?: (e: any) => void;
 }
@@ -20,7 +20,7 @@ interface Props {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     icon: {
-      fontSize: 18,
+      fontSize: 17,
       color: theme.palette.text.primary
     }
   })
@@ -30,11 +30,6 @@ export const PasswordField: React.SFC<Props> = ({ value, placeholder }) => {
   const classes = useStyles({});
   const [showPassword, toggleShowPassword] = React.useState(false);
 
-  const handleShowPassword = (e: any) => {
-    e.preventDefault();
-    toggleShowPassword(!showPassword);
-  };
-
   return (
     <FormControl fullWidth>
       <Input
@@ -43,7 +38,10 @@ export const PasswordField: React.SFC<Props> = ({ value, placeholder }) => {
         placeholder={placeholder}
         endAdornment={
           <InputAdornment position="end">
-            <IconButton className={classes.icon} onClick={handleShowPassword}>
+            <IconButton
+              className={classes.icon}
+              onClick={() => toggleShowPassword(!showPassword)}
+            >
               <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
             </IconButton>
           </InputAdornment>
