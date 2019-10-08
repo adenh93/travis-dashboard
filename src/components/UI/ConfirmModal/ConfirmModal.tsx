@@ -2,12 +2,13 @@ import * as React from "react";
 import { makeStyles, createStyles } from "@material-ui/styles";
 import { Theme, Modal, Box, Typography } from "@material-ui/core";
 import { Button } from "../Button";
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   open: boolean;
   title: string;
   subtitle: string;
+  disableOk?: boolean;
   onCancel?: (e: any) => void;
   onOk?: (e: any) => void;
   onClose?: () => void;
@@ -42,6 +43,7 @@ export const ConfirmModal: React.SFC<Props> = ({
   onCancel,
   onOk,
   onClose,
+  disableOk = false,
   children
 }) => {
   const classes = useStyles({});
@@ -56,7 +58,12 @@ export const ConfirmModal: React.SFC<Props> = ({
         </Typography>
         {children}
         <Box mt={2}>
-          <Button icon={faCheck} label="ok" onClick={onOk} />{" "}
+          <Button
+            icon={faCheck}
+            disabled={disableOk}
+            label="ok"
+            onClick={onOk}
+          />{" "}
           <Button
             icon={faTimes}
             color="secondary"

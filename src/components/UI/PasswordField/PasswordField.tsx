@@ -14,6 +14,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface Props {
   value: string;
   placeholder?: string;
+  error?: boolean;
+  disabled?: boolean;
   onChange?: (e: any) => void;
 }
 
@@ -28,7 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const PasswordField: React.SFC<Props> = ({
   value,
+  error,
   placeholder,
+  disabled = false,
   onChange
 }) => {
   const classes = useStyles({});
@@ -37,13 +41,16 @@ export const PasswordField: React.SFC<Props> = ({
   return (
     <FormControl fullWidth>
       <Input
+        error={error}
         value={value}
         type={showPassword ? "text" : "password"}
         placeholder={placeholder}
+        disabled={disabled}
         onChange={onChange}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
+              disabled={disabled}
               className={classes.icon}
               onClick={() => toggleShowPassword(!showPassword)}
             >

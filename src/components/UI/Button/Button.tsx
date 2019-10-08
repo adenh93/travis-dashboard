@@ -10,6 +10,7 @@ interface Props {
   variant?: "contained" | "outlined" | "text";
   color?: "primary" | "secondary";
   icon?: IconDefinition;
+  disabled?: boolean;
   onClick?: (e: any) => void;
 }
 
@@ -28,6 +29,7 @@ export const Button: React.SFC<Props> = ({
   variant = "contained",
   color = "primary",
   icon,
+  disabled = false,
   onClick
 }) => {
   const classes = useStyles({});
@@ -37,6 +39,7 @@ export const Button: React.SFC<Props> = ({
       size={size}
       color={color}
       variant={variant}
+      disabled={disabled}
       onClick={onClick}
     >
       {icon ? <FontAwesomeIcon className={classes.icon} icon={icon} /> : ""}
