@@ -3,6 +3,7 @@ import { ConfirmModal, Button } from "../../UI";
 import { Typography, Grid, Link, Box } from "@material-ui/core";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { PasswordField } from "../../UI";
+import { testApiConnection } from "../../../utils/api/travisApi";
 
 interface Props {
   open: boolean;
@@ -15,8 +16,15 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
   onCancel,
   onOk
 }) => {
-  const [apiKey, setApiKey] = React.useState();
+  const [apiKey, setApiKey] = React.useState("");
   const handleApiKeyChange = (e: any) => setApiKey(e.target.value);
+
+  const checkApiKey = () => {
+    debugger;
+    const user = testApiConnection(apiKey).catch(error => {
+      throw error;
+    });
+  };
 
   return (
     <ConfirmModal
@@ -50,6 +58,7 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
                 size="small"
                 label="Check"
                 icon={faCheckCircle}
+                onClick={checkApiKey}
               />
             </Grid>
           </Grid>

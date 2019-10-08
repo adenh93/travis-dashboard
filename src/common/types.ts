@@ -36,3 +36,8 @@ export interface Owner {
   name: string;
   avatar_url: string;
 }
+
+export interface User {
+  id: number;
+  login: string;
+}

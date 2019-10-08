@@ -26,7 +26,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const PasswordField: React.SFC<Props> = ({ value, placeholder }) => {
+export const PasswordField: React.SFC<Props> = ({
+  value,
+  placeholder,
+  onChange
+}) => {
   const classes = useStyles({});
   const [showPassword, toggleShowPassword] = React.useState(false);
 
@@ -36,6 +40,7 @@ export const PasswordField: React.SFC<Props> = ({ value, placeholder }) => {
         value={value}
         type={showPassword ? "text" : "password"}
         placeholder={placeholder}
+        onChange={onChange}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
