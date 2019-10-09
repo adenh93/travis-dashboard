@@ -27,6 +27,9 @@ export const theme = createMuiTheme({
     primary: {
       main: main
     },
+    error: {
+      main: "#e06a70"
+    },
     background: {
       paper: main,
       default: "#21252b"
@@ -50,6 +53,9 @@ export const theme = createMuiTheme({
         backgroundColor: blueGrey[700],
         "&:hover": {
           backgroundColor: blueGrey[600]
+        },
+        "&:disabled": {
+          backgroundColor: blueGrey[900]
         }
       },
       containedSecondary: {
@@ -57,6 +63,9 @@ export const theme = createMuiTheme({
         backgroundColor: grey[700],
         "&:hover": {
           backgroundColor: grey[600]
+        },
+        "&:disabled": {
+          backgroundColor: grey[900]
         }
       }
     },
