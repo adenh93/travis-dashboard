@@ -1,8 +1,14 @@
 import * as React from "react";
-import { makeStyles, createStyles } from "@material-ui/styles";
-import { Theme, Modal, Box, Typography } from "@material-ui/core";
+import {
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContentText,
+  DialogContent,
+  DialogActions
+} from "@material-ui/core";
 import { Button } from "../Button";
-import { faCheck, faTimes, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   open: boolean;
@@ -14,28 +20,6 @@ interface Props {
   onClose?: () => void;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    paper: {
-      position: "absolute",
-      width: 600,
-      backgroundColor: theme.palette.background.paper,
-      border: "2px solid #000",
-      boxShadow: theme.shadows[1],
-      padding: theme.spacing(2, 4, 3)
-    },
-    title: {},
-    subtitle: {
-      marginBottom: theme.spacing(2)
-    }
-  })
-);
-
 export const ConfirmModal: React.SFC<Props> = ({
   open,
   title,
@@ -45,33 +29,24 @@ export const ConfirmModal: React.SFC<Props> = ({
   onClose,
   disableOk = false,
   children
-}) => {
-  const classes = useStyles({});
-  return (
-    <Modal className={classes.root} open={open} onClose={onClose}>
-      <div className={classes.paper}>
-        <Typography className={classes.title} variant="h6">
-          {title}
-        </Typography>
-        <Typography className={classes.subtitle} variant="subtitle2">
-          {subtitle}
-        </Typography>
-        {children}
-        <Box mt={2}>
-          <Button
-            icon={faCheck}
-            disabled={disableOk}
-            label="ok"
-            onClick={onOk}
-          />{" "}
-          <Button
-            icon={faTimes}
-            color="secondary"
-            label="cancel"
-            onClick={onCancel}
-          />
-        </Box>
-      </div>
-    </Modal>
-  );
-};
+}) => (
+  <Dialog open={open} onClose={onClose}>
+    <DialogTitle>
+      {title}
+      <Typography variant="subtitle2">{subtitle}</Typography>
+    </DialogTitle>
+    <DialogContent>
+      <DialogContentText color="textPrimary">{children}</DialogContentText>
+    </DialogContent>
+    <DialogActions>
+      <Button icon={faCheck} disabled={disableOk} label="ok" onClick={onOk} />{" "}
+      <Button
+        icon={faTimes}
+        disabled={disableOk}
+        color="secondary"
+        label="cancel"
+        onClick={onCancel}
+      />
+    </DialogActions>
+  </Dialog>
+);

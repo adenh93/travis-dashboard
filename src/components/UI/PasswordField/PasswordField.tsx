@@ -6,7 +6,7 @@ import {
   createStyles,
   InputAdornment,
   IconButton,
-  Input
+  TextField
 } from "@material-ui/core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +15,7 @@ interface Props {
   value: string;
   placeholder?: string;
   error?: boolean;
+  helperText?: string;
   disabled?: boolean;
   onChange?: (e: any) => void;
 }
@@ -32,6 +33,7 @@ export const PasswordField: React.SFC<Props> = ({
   value,
   error,
   placeholder,
+  helperText,
   disabled = false,
   onChange
 }) => {
@@ -40,24 +42,27 @@ export const PasswordField: React.SFC<Props> = ({
 
   return (
     <FormControl fullWidth>
-      <Input
+      <TextField
         error={error}
         value={value}
         type={showPassword ? "text" : "password"}
         placeholder={placeholder}
+        helperText={helperText}
         disabled={disabled}
         onChange={onChange}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton
-              disabled={disabled}
-              className={classes.icon}
-              onClick={() => toggleShowPassword(!showPassword)}
-            >
-              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-            </IconButton>
-          </InputAdornment>
-        }
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                disabled={disabled}
+                className={classes.icon}
+                onClick={() => toggleShowPassword(!showPassword)}
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </IconButton>
+            </InputAdornment>
+          )
+        }}
       />
     </FormControl>
   );

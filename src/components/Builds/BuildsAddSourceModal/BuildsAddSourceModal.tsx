@@ -1,7 +1,6 @@
 import * as React from "react";
-import { ConfirmModal, Button } from "../../UI";
-import { Typography, Grid, Link, Box } from "@material-ui/core";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { ConfirmModal } from "../../UI";
+import { Typography, Link, Box } from "@material-ui/core";
 import { PasswordField } from "../../UI";
 import { testApiConnection } from "../../../utils/api/travisApi";
 import { storeApiKey } from "../../../utils/browserStorageUtils";
@@ -18,31 +17,25 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
   onOk
 }) => {
   const [apiKey, setApiKey] = React.useState("");
-  const [apiKeyInvalid, setApiKeyInvalid] = React.useState();
+  const [apiKeyInvalid, setApiKeyInvalid] = React.useState(false);
   const [waiting, setWaiting] = React.useState(false);
 
   const handleApiKeyChange = (e: any) => setApiKey(e.target.value);
 
-  const checkApiKey = () => {
-    setWaiting(true);
-    testApiConnection(apiKey)
-      .then(() => {
-        setApiKeyInvalid(false);
-      })
-      .catch(error => {
-        setApiKeyInvalid(true);
-      })
-      .finally(() => {
-        setWaiting(false);
-      });
-  };
+  async function trySaveApiKey() {
+    try {
+      setWaiting(true);
+      await testApiConnection(apiKey);
+      saveApiKey();
+    } catch (error) {
+      setApiKeyInvalid(true);
+    }
+    setWaiting(false);
+  }
 
   const saveApiKey = () => {
-    checkApiKey();
-    if (!apiKeyInvalid) {
-      storeApiKey(apiKey);
-      onOk();
-    }
+    storeApiKey(apiKey);
+    onOk();
   };
 
   return (
@@ -51,7 +44,7 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
       title="Add API Source"
       subtitle="Add a Travis CI API source to sync build statuses"
       onCancel={onCancel}
-      onOk={saveApiKey}
+      onOk={trySaveApiKey}
       disableOk={waiting}
     >
       <Typography variant="body2">
@@ -64,27 +57,14 @@ export const BuildsAddSourceModal: React.SFC<Props> = ({
       </Typography>
       <Box my={2}>
         <form>
-          <Grid container spacing={3}>
-            <Grid item xs={9}>
-              <PasswordField
-                error={apiKeyInvalid}
-                value={apiKey}
-                disabled={waiting}
-                placeholder="Enter an API key..."
-                onChange={handleApiKeyChange}
-              />
-            </Grid>
-            <Grid item>
-              <Button
-                color="secondary"
-                size="small"
-                label="Check"
-                disabled={waiting}
-                icon={faCheckCircle}
-                onClick={checkApiKey}
-              />
-            </Grid>
-          </Grid>
+          <PasswordField
+            error={apiKeyInvalid}
+            value={apiKey}
+            disabled={waiting}
+            placeholder="Enter an API key..."
+            helperText={apiKeyInvalid ? "API key invalid" : ""}
+            onChange={handleApiKeyChange}
+          />
         </form>
       </Box>
     </ConfirmModal>
